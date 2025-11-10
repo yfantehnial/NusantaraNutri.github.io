@@ -1,35 +1,25 @@
 // --- 1. Tab Switching Logic ---
 function openTab(evt, tabName) {
-    // Declare all variables
     let i, tabcontent, tabbuttons;
 
-    // Get all elements with class="tab-content" and hide them
+    // Hide all tab content
     tabcontent = document.getElementsByClassName("tab-content");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
 
-    // Get all elements with class="tab-button" and remove the class "active"
+    // Remove the 'active' class from all buttons
     tabbuttons = document.getElementsByClassName("tab-button");
     for (i = 0; i < tabbuttons.length; i++) {
         tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
     }
 
-    // Show the current tab, and add an "active" class to the button that opened the tab
+    // Show the current tab, and add an "active" class to the button
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
 
-// Ensure the default tab is active on load
-document.addEventListener("DOMContentLoaded", () => {
-    // Manually trigger the 'Dashboard' tab
-    document.getElementById("Dashboard").style.display = "block";
-    document.getElementsByClassName("tab-button")[0].className += " active";
-    populateFoodList(); // Call the function to fill the table on load
-});
-
-
-// --- 2. Calorie Calculator Logic (TDEE) ---
+// --- 2. Advanced Calorie Calculator Logic (TDEE + Goal) ---
 function calculateCalories() {
     // Get user input values
     const age = parseFloat(document.getElementById('age').value);
@@ -37,11 +27,12 @@ function calculateCalories() {
     const height = parseFloat(document.getElementById('height').value);
     const weight = parseFloat(document.getElementById('weight').value);
     const activityMultiplier = parseFloat(document.getElementById('activity').value);
+    const goal = document.getElementById('goal').value; 
     const resultElement = document.getElementById('result');
 
     // Input validation
     if (isNaN(age) || isNaN(height) || isNaN(weight) || age <= 0 || height <= 0 || weight <= 0) {
-        resultElement.textContent = "Error: Enter valid numbers.";
+        resultElement.textContent = "INPUT ERROR: Enter valid positive numbers.";
         return;
     }
 
@@ -57,28 +48,49 @@ function calculateCalories() {
     }
 
     // Calculate Total Daily Energy Expenditure (TDEE)
-    // TDEE = BMR * Activity Multiplier
-    const tdee = bmr * activityMultiplier;
+    let tdee = bmr * activityMultiplier;
 
-    // Display the result, rounded to the nearest whole number
-    resultElement.textContent = Math.round(tdee).toLocaleString();
+    // Apply Goal Adjustment Factor
+    let adjustment = 0;
+    if (goal === 'lose') {
+        adjustment = -500; // Calorie deficit for weight loss
+    } else if (goal === 'gain') {
+        adjustment = 300;  // Calorie surplus for weight gain
+    }
+    
+    const finalTarget = tdee + adjustment;
+
+    // Display the result
+    resultElement.textContent = Math.round(finalTarget).toLocaleString();
 }
 
 
-// --- 3. Brunei Food List Population ---
+// --- 3. Brunei Food List Data and Population ---
 const bruneiFoods = [
-    { name: "Nasi Katok", serving: "Small Packet", calories: 350 },
-    { name: "Ambuyat", serving: "Per bowl", calories: 150 },
-    { name: "Nasi Lemak", serving: "Standard Dish", calories: 550 },
-    { name: "Kolo Mee", serving: "Standard Bowl", calories: 420 },
-    { name: "Mee Goreng", serving: "Plate", calories: 480 },
+    // Core Dishes
+    { name: "Nasi Katok (Standard)", serving: "1 Packet", calories: 400 },
+    { name: "Ambuyat with Calamari", serving: "Standard Bowl", calories: 350 },
+    { name: "Mee Goreng (Basic)", serving: "Plate", calories: 550 },
+    { name: "Kolo Mee (Dry/Small)", serving: "Bowl", calories: 420 },
+    { name: "Nasi Lemak (Ayam Goreng)", serving: "Standard Dish", calories: 650 },
+    { name: "Soto (Chicken Noodle Soup)", serving: "Large Bowl", calories: 380 },
+    { name: "Nasi Ayam (Chicken Rice)", serving: "Standard Plate", calories: 600 },
+    { name: "Roti Prata/Canai (2 Pcs)", serving: "2 Pieces", calories: 320 },
+    { name: "Kuih Mor (Peanut Cookies)", serving: "5 Pieces", calories: 150 },
+    // Snacks & Kuih Muih
+    { name: "Kek Lapis (Average Slice)", serving: "1 Slice (70g)", calories: 280 },
     { name: "Penyaram (Kuih)", serving: "1 Piece", calories: 200 },
-    { name: "Ayam Penyet", serving: "Standard Plate", calories: 600 },
-    { name: "Bandung (Drink)", serving: "1 Glass", calories: 180 }
+    { name: "Cucur Pisang (Fried Banana)", serving: "3 Pieces", calories: 250 },
+    // Drinks (Commonly High Calorie)
+    { name: "Teh Tarik (Sweet)", serving: "1 Mug", calories: 180 },
+    { name: "Milo Ais (Sweet)", serving: "1 Glass", calories: 250 },
+    { name: "Kopi Susu (Sweet)", serving: "1 Glass", calories: 160 }
 ];
 
 function populateFoodList() {
     const tableBody = document.querySelector('#food-table tbody');
+    // Clear old data first
+    tableBody.innerHTML = '';
     
     bruneiFoods.forEach(food => {
         const row = tableBody.insertRow();
@@ -87,3 +99,11 @@ function populateFoodList() {
         row.insertCell().textContent = food.calories.toLocaleString();
     });
 }
+
+// Initial setup on page load
+document.addEventListener("DOMContentLoaded", () => {
+    // Manually trigger the 'Dashboard' tab to be active
+    document.getElementById("Dashboard").style.display = "block";
+    document.getElementsByClassName("tab-button")[0].className += " active";
+    populateFoodList(); // Call the function to fill the local food table
+});
