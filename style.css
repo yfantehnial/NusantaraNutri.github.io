@@ -1,37 +1,247 @@
-/* --- Futuristic Design Base --- */
+/* --- Global Reset & Typography --- */
 body {
-    background-color: #121212; /* Deep Black/Dark Grey */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Deep Black/Dark Grey for futuristic feel */
     color: #e0e0e0; /* Off-White/Light Grey Text */
-    transition: background-color 0.5s;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
 header {
-    background-color: #00A389; /* Keep Teal for accent */
-    box-shadow: 0 0 15px rgba(0, 163, 137, 0.4); /* Subtle glow effect */
+    background-color: #00A389; /* Primary Teal Accent */
+    color: white;
+    padding: 25px 0;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 163, 137, 0.5); /* Subtle neon glow */
+    margin-bottom: 20px;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    letter-spacing: 1.5px;
+    font-weight: 700;
 }
 
-/* Glass/Card Effect */
-.card, .tab-content {
-    background: rgba(40, 40, 40, 0.8); /* Semi-transparent dark card */
+/* --- Tab Navigation Styling --- */
+.tabs {
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    background: rgba(40, 40, 40, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.tab-button {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background-color: #2c2c2c;
+}
+
+.tab-button.active {
+    color: #00A389;
+    border-bottom: 3px solid #00A389;
+    background-color: #202020;
+    box-shadow: inset 0 0 5px rgba(0, 163, 137, 0.7);
+}
+
+/* --- Content & Card Styling (Glassmorphism/Dark Mode) --- */
+.tab-content {
+    padding: 30px;
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(40, 40, 40, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
-    backdrop-filter: blur(5px); /* The Glassmorphism effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.tab-content.active {
+    display: block;
 }
 
 h2 {
     color: #00A389;
-    text-shadow: 0 0 5px rgba(0, 163, 137, 0.7); /* Neon glow on headings */
+    text-shadow: 0 0 5px rgba(0, 163, 137, 0.5);
+    border-bottom: 2px solid #2c2c2c;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-/* Data Display */
-.data-point h3 {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #00A389;
-    margin-bottom: 0;
-}
-.data-point small {
+.guide-text {
     color: #909090;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+/* Dashboard Grid Specifics */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.data-card {
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #202020;
+    border-left: 5px solid #00A389;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.card-title {
+    color: #00A389;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+.goal-tracker { grid-column: 1 / 2; grid-row: 1 / 3; text-align: center; }
+.macro-summary { grid-column: 2 / 3; grid-row: 1 / 2; }
+.daily-fact-module { grid-column: 2 / 3; grid-row: 2 / 3; }
+.hydration-module { grid-column: 1 / 3; }
+
+/* Faux Circular Progress Bar */
+.circular-progress {
+    display: inline-block;
+    font-size: 2.5em;
+    font-weight: 800;
+    color: white;
+    padding: 20px;
+    border-radius: 50%;
+    /* Ring Chart Simulation */
+    background: radial-gradient(closest-side, #202020 79%, transparent 80% 100%),
+                conic-gradient(#00A389 calc(var(--progress, 0) * 1%), #333 0);
+    box-shadow: 0 0 15px rgba(0, 163, 137, 0.7);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Hydration Bar */
+.hydration-bar {
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.hydration-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: var(--level, 0);
+    background-color: #3498db;
+    transition: width 0.5s;
+}
+
+/* --- Form and Input Styling --- */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #e0e0e0;
+    flex-basis: 35%;
+}
+
+input[type="number"], select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    width: 60%;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #e0e0e0;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #00A389;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 163, 137, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #00A389;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #008775;
+}
+
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #203530; /* Darker teal background */
+    border: 1px solid #00A389;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.result-box h4 {
+    margin: 0;
+    color: #00A389;
+    text-shadow: 0 0 5px rgba(0, 163, 137, 0.5);
+}
+
+/* --- Table Styling --- */
+#food-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+#food-table th, #food-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #2c2c2c;
+    color: #e0e0e0;
+}
+
+#food-table th {
+    background-color: #00A389;
+    color: white;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#food-table tr:nth-child(even) {
+    background-color: #1f1f1f;
+}
+
+#food-table tr:hover td {
+    background-color: #2c2c2c;
+    cursor: pointer;
 }
