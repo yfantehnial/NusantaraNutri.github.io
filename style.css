@@ -1,190 +1,37 @@
-/* --- Global Reset & Typography --- */
+/* --- Futuristic Design Base --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4f8; /* Soft, light blue-grey background */
-    color: #2c3e50; /* Dark, professional text color */
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    background-color: #121212; /* Deep Black/Dark Grey */
+    color: #e0e0e0; /* Off-White/Light Grey Text */
+    transition: background-color 0.5s;
 }
 
 header {
-    background-color: #00A389; /* Primary Teal Accent */
-    color: white;
-    padding: 25px 0;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-header h1 {
-    margin: 0;
-    font-size: 2.2em;
-    letter-spacing: 1px;
+    background-color: #00A389; /* Keep Teal for accent */
+    box-shadow: 0 0 15px rgba(0, 163, 137, 0.4); /* Subtle glow effect */
 }
 
-/* --- Tab Navigation Styling --- */
-.tabs {
-    display: flex;
-    justify-content: center;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-}
-
-.tab-button {
-    flex-grow: 1;
-    background: none;
-    border: none;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    color: #34495e;
-    transition: all 0.3s ease;
-    border-bottom: 3px solid transparent;
-}
-
-.tab-button:hover {
-    background-color: #ecf0f1;
-}
-
-.tab-button.active {
-    color: #00A389;
-    border-bottom: 3px solid #00A389;
-    background-color: #f8f9fa;
-}
-
-/* --- Content & Card Styling --- */
-.tab-content {
-    padding: 30px;
-    display: none;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Pronounced shadow for depth */
-}
-
-.tab-content.active {
-    display: block;
+/* Glass/Card Effect */
+.card, .tab-content {
+    background: rgba(40, 40, 40, 0.8); /* Semi-transparent dark card */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    backdrop-filter: blur(5px); /* The Glassmorphism effect */
+    border-radius: 15px;
 }
 
 h2 {
     color: #00A389;
-    border-bottom: 2px solid #ecf0f1;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(0, 163, 137, 0.7); /* Neon glow on headings */
 }
 
-.card {
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f7fcfb; /* Very light subtle background */
-    border-left: 5px solid #00A389;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.card h3 {
-    color: #34495e;
-    margin-top: 0;
-}
-
-/* --- Form and Input Styling --- */
-.form-group {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.form-group label {
-    font-weight: 600;
-    color: #34495e;
-    flex-basis: 35%; /* Control label width */
-}
-
-input[type="number"], select {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #bdc3c7;
-    width: 60%;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-input:focus, select:focus {
-    border-color: #00A389;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 163, 137, 0.2);
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    background-color: #00A389;
-    color: white;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    margin-top: 15px;
-    transition: background-color 0.3s, transform 0.1s;
-}
-
-button:hover {
-    background-color: #008775;
-}
-button:active {
-    transform: scale(0.99);
-}
-
-.result-box {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #e8f8f5; /* Light teal background */
-    border: 1px solid #00A389;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.result-box h4 {
-    margin: 0;
-    color: #00A389;
-}
-
-/* --- Table Styling --- */
-#food-table {
-    width: 100%;
-    border-collapse: separate; /* Use separate for rounded corners */
-    border-spacing: 0;
-    margin-top: 15px;
-    overflow: hidden; /* Helps with border radius */
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-#food-table th, #food-table td {
-    padding: 15px;
-    text-align: left;
-}
-
-#food-table th {
-    background-color: #00A389;
-    color: white;
+/* Data Display */
+.data-point h3 {
+    font-size: 2.5em;
     font-weight: 700;
+    color: #00A389;
+    margin-bottom: 0;
+}
+.data-point small {
+    color: #909090;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-#food-table tr:nth-child(even) {
-    background-color: #f7f9fb;
-}
-
-#food-table tr:hover td {
-    background-color: #e9ecef;
-    cursor: pointer;
 }
