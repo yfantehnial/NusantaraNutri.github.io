@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brunei Health Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🇧🇳 Health & Calorie Tracker</h1>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'Dashboard')">Dashboard</button>
+        <button class="tab-button" onclick="openTab(event, 'Calculator')">Calorie Calculator</button>
+        <button class="tab-button" onclick="openTab(event, 'FoodList')">Brunei Food List</button>
+    </div>
+
+    <div id="Dashboard" class="tab-content active">
+        <h2>Dashboard & Daily Fact</h2>
+        <div class="card">
+            <h3>🧠 Daily Healthy Fact</h3>
+            <p id="daily-fact">Drink at least 8 glasses of water a day for better metabolism!</p>
+            <small>*(Static for this front-end prototype)*</small>
+        </div>
+    </div>
+
+    <div id="Calculator" class="tab-content">
+        <h2>⚖️ Calorie Intake Calculator (TDEE)</h2>
+        <div class="form-group">
+            <label for="age">Age (years):</label>
+            <input type="number" id="age" value="30" min="1">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" value="175" min="1">
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" value="70" min="1">
+        </div>
+        <div class="form-group">
+            <label for="activity">Activity Level:</label>
+            <select id="activity">
+                <option value="1.2">Sedentary (little exercise)</option>
+                <option value="1.375">Lightly Active</option>
+                <option value="1.55">Moderately Active</option>
+                <option value="1.725">Very Active</option>
+            </select>
+        </div>
+
+        <button onclick="calculateCalories()">Calculate Goal</button>
+
+        <div class="result-box">
+            <h4>Base Calorie Intake (TDEE): <span id="result">0</span> kcal</h4>
+            <small>*(Does not include scheduled exercise adjustment)*</small>
+        </div>
+    </div>
+
+    <div id="FoodList" class="tab-content">
+        <h2>🍚 Brunei Food Calorie List (Average)</h2>
+        <table id="food-table">
+            <thead>
+                <tr>
+                    <th>Food Item</th>
+                    <th>Serving Size (Approx.)</th>
+                    <th>Average Calories (kcal)</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
