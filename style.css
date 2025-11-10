@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #008080; /* Teal/Brunei-inspired color */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #ddd;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.tab-button:hover {
+    background-color: #ccc;
+}
+
+.tab-button.active {
+    background-color: #008080;
+    color: white;
+}
+
+.tab-content {
+    padding: 20px;
+    display: none; /* Initially hide all tab content */
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tab-content.active {
+    display: block; /* Show active tab content */
+}
+
+/* Calculator and Form Styles */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input, select, button {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 60%; /* Adjust width for inputs */
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    background-color: #00a0a0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e6fff0;
+    border: 1px solid #ccffdd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.card {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fffaf0;
+}
+
+/* Food List Table Styles */
+#food-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#food-table th, #food-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#food-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
