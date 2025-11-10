@@ -3,57 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriScan BN | Futuristic Health Tracker</title>
+    <title>NutriScan BN | Brunei Health Console</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>🇧🇳 NutriScan BN: Calorie Matrix</h1>
+        <h1>🇧🇳 NutriScan BN</h1>
+        <p>Calorie Matrix & Health Console</p>
     </header>
 
     <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'Dashboard')">Dashboard</button>
-        <button class="tab-button" onclick="openTab(event, 'Calculator')">Calorie Calculator</button>
-        <button class="tab-button" onclick="openTab(event, 'FoodList')">Brunei Food List</button>
+        <button class="tab-button active" onclick="openTab(event, 'NewsFeed')">Health News</button>
+        <button class="tab-button" onclick="openTab(event, 'Calculator')">Calorie Planner</button>
+        <button class="tab-button" onclick="openTab(event, 'FoodList')">Local Calorie Index</button>
     </div>
 
-    <div id="Dashboard" class="tab-content active">
-        <h2 class="futuristic-h2">📊 Calorie Matrix Overview</h2>
+    <div id="NewsFeed" class="tab-content active">
+        <h2>📰 Brunei Health Console</h2>
+        <p class="guide-text">Simulated auto-update feed from MOH and local health sources.</p>
         
-        <div class="dashboard-grid">
-            <div class="data-card goal-tracker">
-                <h3 class="card-title">Daily Intake Progress</h3>
-                <div class="circular-progress" style="--progress: 60;">
-                    <span id="consumed-calories">1080</span> / 
-                    <span id="target-calories">1800</span>
-                </div>
-                <small>Kcal Consumed</small>
+        <div class="news-feed-container">
+            <div class="news-card">
+                <span class="news-date">NOV 08</span>
+                <h3>New Guidelines on NCD Prevention</h3>
+                <p>The Ministry of Health announced updated strategies targeting non-communicable diseases. Focus is placed on community exercise programs and diet awareness.</p>
+                <a href="#" class="read-more-btn">Read More</a>
             </div>
-
-            <div class="data-card macro-summary">
-                <h3 class="card-title">Macros Today</h3>
-                <p>Protein: <span id="macro-protein">65g</span></p>
-                <p>Carbs: <span id="macro-carbs">150g</span></p>
-                <p>Fat: <span id="macro-fat">40g</span></p>
+            
+            <div class="news-card">
+                <span class="news-date">OCT 30</span>
+                <h3>Flu Season Alert: Vaccination Drive</h3>
+                <p>A reminder to the public on the importance of the seasonal flu vaccine, especially for high-risk groups. Clinics are offering free vaccinations this month.</p>
+                <a href="#" class="read-more-btn">Read More</a>
             </div>
-
-            <div class="data-card daily-fact-module">
-                <h3 class="card-title">🧠 Protocol Alert (Daily Tip)</h3>
-                <p id="daily-fact">⚡ **FOCUS:** Remember to log your water intake. Hydration status is key for metabolic function.</p>
-                <small>*(Static placeholder for this front-end version)*</small>
-            </div>
-
-            <div class="data-card hydration-module">
-                <h3 class="card-title">💧 Hydration Level</h3>
-                <div class="hydration-bar" style="--level: 60%;"></div>
-                <p>Logged: <span id="water-intake">1.2 L</span> / 2.0 L</p>
+            
+            <div class="news-card tip-card">
+                <span class="news-date">DAILY TIP</span>
+                <h3>Optimal Hydration Protocol</h3>
+                <p>🔑 **Focus:** Aim for 8 glasses of water today. Proper hydration dramatically improves nutrient absorption and metabolism.</p>
             </div>
         </div>
     </div>
 
     <div id="Calculator" class="tab-content">
-        <h2>⚖️ TDEE & Goal Calculator</h2>
+        <h2>⚖️ Calorie Planner (TDEE + Goal)</h2>
         <p class="guide-text">Calculate your daily maintenance and adjust for your weight goal.</p>
         
         <div class="form-group">
@@ -102,14 +96,14 @@
     </div>
 
     <div id="FoodList" class="tab-content">
-        <h2>🍚 Brunei Food Calorie Matrix (Average Estimates)</h2>
+        <h2>🍚 Local Calorie Index</h2>
         <p class="guide-text">A list of common local dishes and their average estimated calories per serving.</p>
         <table id="food-table">
             <thead>
                 <tr>
                     <th>Food Item</th>
                     <th>Serving Size (Approx.)</th>
-                    <th>Average Calories (kcal)</th>
+                    <th>Calories (kcal)</th>
                 </tr>
             </thead>
             <tbody>
