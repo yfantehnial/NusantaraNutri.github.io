@@ -40,10 +40,8 @@ function calculateCalories() {
 
     // Calculate Basal Metabolic Rate (BMR) using Mifflin-St Jeor Equation
     if (gender === 'male') {
-        // BMR Men: (10 * weight) + (6.25 * height) - (5 * age) + 5
         bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
     } else { // female
-        // BMR Women: (10 * weight) + (6.25 * height) - (5 * age) - 161
         bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
     }
 
@@ -76,7 +74,7 @@ const bruneiFoods = [
     { name: "Soto (Chicken Noodle Soup)", serving: "Large Bowl", calories: 380 },
     { name: "Nasi Ayam (Chicken Rice)", serving: "Standard Plate", calories: 600 },
     { name: "Roti Prata/Canai (2 Pcs)", serving: "2 Pieces", calories: 320 },
-    { name: "Kuih Mor (Peanut Cookies)", serving: "5 Pieces", calories: 150 },
+    { name: "Kelupis (Glutinous Rice)", serving: "1 Piece", calories: 120 },
     // Snacks & Kuih Muih
     { name: "Kek Lapis (Average Slice)", serving: "1 Slice (70g)", calories: 280 },
     { name: "Penyaram (Kuih)", serving: "1 Piece", calories: 200 },
@@ -89,7 +87,6 @@ const bruneiFoods = [
 
 function populateFoodList() {
     const tableBody = document.querySelector('#food-table tbody');
-    // Clear old data first
     tableBody.innerHTML = '';
     
     bruneiFoods.forEach(food => {
@@ -102,8 +99,8 @@ function populateFoodList() {
 
 // Initial setup on page load
 document.addEventListener("DOMContentLoaded", () => {
-    // Manually trigger the 'Dashboard' tab to be active
-    document.getElementById("Dashboard").style.display = "block";
+    // Manually trigger the 'NewsFeed' tab to be active
+    document.getElementById("NewsFeed").style.display = "block";
     document.getElementsByClassName("tab-button")[0].className += " active";
-    populateFoodList(); // Call the function to fill the local food table
+    populateFoodList();
 });
